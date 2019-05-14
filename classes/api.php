@@ -18,6 +18,12 @@ class API
 
     public function create($data)
     {
+        $fields = [];
+        foreach ($this->fields as $field) {
+            if ($field !== $this->table_id) {
+                $fields[] = $field;
+            }
+        }
         // Setup query.
         $sql = "INSERT INTO $this->table (" . implode(', ', $this->fields) . ") " .
             'VALUES (:' . implode(', :', $this->fields) . ')';
@@ -25,6 +31,9 @@ class API
         $statement = $this->db->prepare($sql);
         // Bind values.
         foreach ($this->getFields() as $field) {
+            if ($field === $this->table_id) {
+                continue;
+            }
             // Different filter and pdo type depending on wether the field is string or number.
             // Not fool proof, but a beginning.
             $filter = FILTER_SANITIZE_NUMBER_INT;
@@ -39,6 +48,7 @@ class API
         // Execute query and return result.
         return $statement->execute();
     }
+    
 
     public function get($id = null)
     {
@@ -79,6 +89,25 @@ class API
         }
         $sql .= implode(', ', $arr_fields);
         $sql .= " WHERE $this->table_id = :table_id ";
+        // Prepare query.
+        $statement = $this->db->prepare($sql);
+        // Bind values.
+        $statement->bindValue('table_id', $id, PDO::PARAM_STR);
+        // Execute query and return result.
+        return $statement->execute();
+    }
+
+    public function delete($data)
+    {
+        $id = null;
+        if (isset($data->{$this->table_id})) {
+            $id = $data->{$this->table_id};
+        } else {
+            return false;
+        }
+        // Setup query.
+        $sql = "DELETE FROM $this->table 
+        WHERE $this->table_id = :table_id ";
         // Prepare query.
         $statement = $this->db->prepare($sql);
         // Bind values.

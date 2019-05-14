@@ -54,7 +54,16 @@ if (empty($class)) {
     switch ($request_method) {
         // Delete record.
         case 'delete':
-            // Handle delete.
+        if ($obj->delete($body_data)) {
+            http_response_code(201);
+            $response['results'] = $body_data;
+            $response['info']['no'] = 1;
+            $response['info']['message'] = "Item deleted.";
+        } else {
+            http_response_code(503);
+            $response['info']['no'] = 0;
+            $response['info']['message'] = "Couldn't delete item.";
+        }
             break;
         // Create record.
         case 'post':
