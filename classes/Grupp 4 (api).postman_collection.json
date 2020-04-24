@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "e177a773-adca-4e1e-97a3-925a25092fd5",
+		"name": "Grupp 4 (api)",
+		"description": "The Book Shop Api Service provides service for Get, Post, Put and Delete... ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost/projects/rest_api2/index.php?publishers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"publisherId\": \"11\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost/projects/rest_api2/index.php?publishers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"projects",
+						"rest_api2",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "publishers",
+							"value": null
+						}
+					]
+				},
+				"description": "Get all rows from table by just adding table name as query string. \n\nAvailable tables are \"books\", \"authors\" and \"publishers\", possibly \"reviews\"."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/projects/rest_api2/index.php?publishers/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"publisherId\": \"11\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost/projects/rest_api2/index.php?publishers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"projects",
+						"rest_api2",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "publishers/1",
+							"value": null
+						}
+					]
+				},
+				"description": "Get just one row from table by just adding \"/\" + a number to the query string, representing the id-number of the row. \n\nAvailable tables are \"books\", \"authors\" and \"publishers\", possibly \"reviews\"."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/projects/rest_api2/index.php?publishers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"publisherName\": \"Anders Publishing Co\",\n\t\"city\": \"Florens\",\n\t\"country\": \"Italy\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost/projects/rest_api2/index.php?publishers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"projects",
+						"rest_api2",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "publishers",
+							"value": null
+						}
+					]
+				},
+				"description": "Creates a row in any table with table namn as query string and the following example json input: \n\n{\n\t\"publisherName\": \"Anders Publishing Co\",\n\t\"city\": \"Florens\",\n\t\"country\": \"Italy\"\n}\n\nAvailable tables are \"books\", \"authors\" and \"publishers\", possibly \"reviews\"."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/projects/rest_api2/index.php?publishers",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"publisherId\": \"9\",\n\t\"city\": \"Södra Lagnö\",\n\t\"country\": \"Sweden\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost/projects/rest_api2/index.php?publishers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"projects",
+						"rest_api2",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "publishers",
+							"value": null
+						}
+					]
+				},
+				"description": "Updates any field in any table with table name in query string and the following example json input, the id-field being crucial: \n\n{\n\t\"publisherId\": \"9\",\n\t\"city\": \"Södra Lagnö\",\n\t\"country\": \"Sweden\"\n}\n\nAvailable tables are \"books\", \"authors\" and \"publishers\", possibly \"reviews\"."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/projects/rest_api2/index.php?publishers",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"publisherId\": \"12\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost/projects/rest_api2/index.php?publishers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"projects",
+						"rest_api2",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "publishers",
+							"value": null
+						}
+					]
+				},
+				"description": "Deletes any row from any table with table name in query string and the following json input example, the id-field being crucial:\n\n{\n\t\"publisherId\": \"12\"\n}\n\nAvailable tables are \"books\", \"authors\" and \"publishers\", possibly \"reviews\"."
+			},
+			"response": []
+		}
+	]
+}
