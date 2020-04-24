@@ -25,13 +25,13 @@ class API
             }
         }
         // Setup query.
-        $sql = "INSERT INTO $this->table (" . implode(', ', $this->fields) . ") " .
-            'VALUES (:' . implode(', :', $this->fields) . ')';
+        $sql = "INSERT INTO $this->table (" . implode(', ', $fields) . ") " .
+            'VALUES (:' . implode(', :', $fields) . ')';
         // Prepare query.
         $statement = $this->db->prepare($sql);
         // Bind values.
         foreach ($this->getFields() as $field) {
-            if ($field === $this->table_id) {
+            if ($field['Field'] === $this->table_id) {
                 continue;
             }
             // Different filter and pdo type depending on wether the field is string or number.

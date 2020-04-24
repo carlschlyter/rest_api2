@@ -3,7 +3,8 @@
 // include "classes/api.php";
 // include "classes/authors.php";
 // include "classes/books.php";
-// include "classes/publishers2.php";
+// include "classes/auth.php";
+
 spl_autoload_register(function($class_name){
     if (file_exists('classes/' . $class_name . '.php')) {
         include 'classes/' . $class_name . '.php';
@@ -41,8 +42,8 @@ $obj = new $class;
 //var_dump($obj->get());
 
 $response = [
-    'info' => null,
-    'results' => null
+    // 'info' => null,
+    // 'results' => null
 ];
 
 if (empty($class)) {
@@ -97,9 +98,10 @@ if (empty($class)) {
             $data = $obj->get($args);
             if ($data) {
                 http_response_code(200);
-                $response['info']['no'] = count($data);
-                $response['info']['message'] = "Returned items.";
-                $response['results'] = $data;
+                // $response['info']['no'] = count($data);
+                // $response['info']['message'] = "Returned items.";
+                // $response['results'] = $data;
+                $response = $data;
             } else {
                 http_response_code(404);
                 $response['info']['message'] = "Couldn't find any items.";
