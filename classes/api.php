@@ -59,7 +59,7 @@ class API
             // If caller has provided id, then let's just look for that one product.
             $sql .= " WHERE $this->table_id = :isbn ";
             $parameters = ['isbn' => $id];
-        }
+        }   
 
         $statement = $this->db->prepare($sql);
         $statement->execute($parameters);
